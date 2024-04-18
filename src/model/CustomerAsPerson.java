@@ -19,7 +19,7 @@ public class CustomerAsPerson extends AbstractCustomerAsPerson{
 	}
 	
 	public String toString() {
-		return person.toString();
+		return super.toString() + person.toString() + super.getCustomerCode();
 	}
 }
 

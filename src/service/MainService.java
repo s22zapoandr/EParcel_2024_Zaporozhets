@@ -32,9 +32,9 @@ public class MainService {
 		}
 		
 		Address a1 = new Address();
-		Address a2 = new Address(City.Riga, "Targales iela", 41);
-		Address a3 = new Address(City.Riga, "Lieapajas iela", 54);
-		Address a4 = new Address(City.Daugavpils, "Saules iela", 76);
+		Address a2 = new Address(City.Riga, "Targales", 41);
+		Address a3 = new Address(City.Riga, "Lieapajas", 54);
+		Address a4 = new Address(City.Daugavpils, "Saules", 76);
 		
 		
 		Parcel p1 = new Parcel();
@@ -51,7 +51,7 @@ public class MainService {
 		
 		CustomerAsCompany c1 = new CustomerAsCompany();
 		CustomerAsCompany c2 = new CustomerAsCompany(a1, "63628303", "Ventspils Augstskola", "321904512" );
-		CustomerAsPerson c3 = new CustomerAsPerson("Anton", "Volkov", "43722-41016");
+		CustomerAsPerson c3 = new CustomerAsPerson("Anton", "Volkov", "437202-41016");
 		allCustomers.addAll(Arrays.asList(c1, c2, c3));
 		for(AbstractCustomer tempC : allCustomers) {
 			System.out.println(tempC.toString());

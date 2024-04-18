@@ -4,9 +4,7 @@ public abstract class AbstractCustomerAsPerson extends AbstractCustomer{
 	public Person person;
 	
 	public AbstractCustomerAsPerson(){
-		this.person.setName("John");
-		person.setSurname("Smith");
-		person.setPersonCode("1234567890");
+		this.person = new Person();
 	}
 	
 	public AbstractCustomerAsPerson(String name, String surname, String personCode ) {
@@ -16,6 +14,6 @@ public abstract class AbstractCustomerAsPerson extends AbstractCustomer{
 	}
 	
 	public String toString() {
-		return person.toString();
+		return super.toString();
 	}
 }

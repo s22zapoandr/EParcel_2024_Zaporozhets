@@ -31,7 +31,7 @@ public class CustomerAsCompany extends AbstractCustomer {
 	}
 	
 	public void setCustomerCode() {
-		this.customerCode = (String) (cID+"_company_"+companyRegNo) ;
+		super.customerCode = (String) (cID+"_company_"+companyRegNo) ;
 	}
 	
 	public CustomerAsCompany() {
@@ -52,6 +52,6 @@ public class CustomerAsCompany extends AbstractCustomer {
 	}
 	
 	public String toString() {
-		return super.toString() + " customer code: " + customerCode + " company name: " + title + " regestration number " + companyRegNo; 
+		return super.toString()  + " company name: " + title + " regestration number " + companyRegNo; 
 	}
 }

@@ -33,7 +33,7 @@ public abstract class AbstractCustomer {
 		return phoneNo;
 	}
 	public void setPhoneNo(String phoneNo) {
-		if(phoneNo != null && phoneNo.matches("[A-Z]{1}[a-z]{1,20}")) {
+		if(phoneNo != null && phoneNo.matches("[0-9]{8}")) {
 			this.phoneNo = phoneNo;
 		}
 		else {

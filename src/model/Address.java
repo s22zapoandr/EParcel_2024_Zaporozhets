@@ -20,7 +20,7 @@ public class Address {
 		return streetOrHouseTitle;
 	}
 	public void setStreetOrHouseTitle(String streetOrHouseTitle) {
-		if(streetOrHouseTitle != null && streetOrHouseTitle.matches("[A-Za-z ]{3,20}")) {
+		if(streetOrHouseTitle != null && streetOrHouseTitle.matches("[A-Za-z ]{1,20}")) {
 			this.streetOrHouseTitle = streetOrHouseTitle;
 		}
 		else {
@@ -41,7 +41,7 @@ public class Address {
 	
 	public Address() {
 		setCity(City.Ventspils);
-		setStreetOrHouseTitle("Inženieru iela");
+		setStreetOrHouseTitle("Inzenieru iela");
 		setHouseNo(101);	
 	}
 	public Address(City city, String streetOrHouseTitle, int houseNo) {
