@@ -3,6 +3,8 @@ package model;
 public abstract class AbstractCustomerAsPerson extends AbstractCustomer{
 	public Person person;
 	
+
+	
 	public AbstractCustomerAsPerson(){
 		this.person = new Person();
 	}

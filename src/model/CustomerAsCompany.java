@@ -11,9 +11,7 @@ public class CustomerAsCompany extends AbstractCustomer {
 	public void setTitle(String title) {
 		if(title != null) {
 			this.title = title;
-		}
-		else
-		{
+		} else {
 			this.title = "Stark Industries";
 		}
 	}
@@ -23,9 +21,7 @@ public class CustomerAsCompany extends AbstractCustomer {
 	public void setCompanyRegNo(String companyRegNo) {
 		if(companyRegNo != null) {
 			this.companyRegNo = companyRegNo;
-		}
-		else
-		{
+		} else {
 			this.companyRegNo = "000000000";
 		}
 	}
@@ -52,6 +48,6 @@ public class CustomerAsCompany extends AbstractCustomer {
 	}
 	
 	public String toString() {
-		return super.toString()  + " company name: " + title + " regestration number " + companyRegNo; 
+		return super.toString()  + " company name: " + title + ", regestration number " + companyRegNo; 
 	}
 }

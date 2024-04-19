@@ -23,8 +23,7 @@ public class Parcel {
 	public void setPlannedDelivery(LocalDateTime plannedDelivery) {
 		if(plannedDelivery.isAfter(orderCreated)) {
 			this.plannedDelivery = plannedDelivery;
-		}
-		else {
+		} else {
 			this.plannedDelivery = LocalDateTime.of(2025, 04, 24, 14, 33, 48, 123456789);
 		}
 	}
@@ -34,8 +33,7 @@ public class Parcel {
 	public void setSize(ParcelSize size) {
 		if(size != null) {
 			this.size = size;
-		}
-		else {
+		} else {
 			this.size = ParcelSize.M;
 		}
 	}
@@ -48,8 +46,7 @@ public class Parcel {
 	public void setFragile(boolean isFragile) {
 		if( isFragile == true || isFragile == false) {
 			this.isFragile = isFragile;
-		}
-		else {
+		} else {
 			this.isFragile = false;
 		}
 	}
@@ -77,8 +74,7 @@ public class Parcel {
     }
 		if(isFragile ) {
 			this.price = counter + 2.99f;
-		}
-		else {
+		} else {
 			this.price = counter;
 		}
 	}
@@ -89,8 +85,7 @@ public class Parcel {
 	public void setDriver(Driver driver) {
 		if(driver != null) {
 			this.driver = driver;
-		}	
-		else {
+		}else {
 			this.driver = new Driver();
 		}
 	}
@@ -114,7 +109,7 @@ public class Parcel {
 	}
 	
 	public String toString() {
-		return "Created :" +  orderCreated + ", planned delivery: " + plannedDelivery + " for " + price + " euros of size " + size + " is fragile :" + isFragile + " by " + driver;
+		return "Created :" +  orderCreated + ", planned delivery: " + plannedDelivery + " for " + price + " euros of size " + size + ", is fragile: " + isFragile + " by " + driver;
 	}
 	
 }

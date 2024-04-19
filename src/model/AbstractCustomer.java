@@ -24,19 +24,17 @@ public abstract class AbstractCustomer {
 	public void setAddress(Address address) {
 		if(address != null) {
 			this.address = address;
-		}
-		else {
+		} else {
 			this.address = new Address();
 		}
-		}
+	}
 	public String getPhoneNo() {
 		return phoneNo;
 	}
 	public void setPhoneNo(String phoneNo) {
 		if(phoneNo != null && phoneNo.matches("[0-9]{8}")) {
 			this.phoneNo = phoneNo;
-		}
-		else {
+		}else {
 			this.phoneNo = "00000000";
 		}
 	}
@@ -46,8 +44,7 @@ public abstract class AbstractCustomer {
 	public void setPackages(ArrayList<Parcel> parcels) {
 		if(parcels != null) {
 			this.parcels = parcels;
-		}
-		else {
+		} else {
 			this.parcels = new ArrayList<Parcel>();
 		}
 	}

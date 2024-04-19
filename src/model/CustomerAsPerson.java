@@ -3,23 +3,28 @@ package model;
 public class CustomerAsPerson extends AbstractCustomerAsPerson{
 	@Override
 	public void setCustomerCode() {
-		this.customerCode = (String) (cID + "_person_" + person.getPersonCode());
+		customerCode = (String) (cID + "_person_" + super.person.personCode);
 	}
 	
 	public CustomerAsPerson() {
 		person.setName("John");
 		person.setSurname("Smith");
 		person.setPersonCode("1234567890");
+		setCustomerCode();
+		setPhoneNo("000000000");
 	}
 	
-	public CustomerAsPerson(String name, String surname, String personCode ) {
+	public CustomerAsPerson(String name, String surname, String personCode, Address address, String phoneNumber) {
 		person.setName(name);
 		person.setSurname(surname);
 		person.setPersonCode(personCode);
+		setCustomerCode();
+		setAddress(address);
+		setPhoneNo(phoneNumber);
 	}
 	
 	public String toString() {
-		return super.toString() + person.toString() + super.getCustomerCode();
+		return super.toString() +", name: "+ person.toString();
 	}
 }
 

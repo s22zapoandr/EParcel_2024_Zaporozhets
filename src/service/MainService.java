@@ -51,10 +51,38 @@ public class MainService {
 		
 		CustomerAsCompany c1 = new CustomerAsCompany();
 		CustomerAsCompany c2 = new CustomerAsCompany(a1, "63628303", "Ventspils Augstskola", "321904512" );
-		CustomerAsPerson c3 = new CustomerAsPerson("Anton", "Volkov", "437202-41016");
+		CustomerAsPerson c3 = new CustomerAsPerson("Anton", "Volkov", "437202-41016", a4, "23374110");
 		allCustomers.addAll(Arrays.asList(c1, c2, c3));
 		for(AbstractCustomer tempC : allCustomers) {
 			System.out.println(tempC.toString());
+		}
+		System.out.println(p5.getPrice());
+		System.out.println(p5.getDriver());
+		System.out.println(p5.getOrderCreated());
+		System.out.println(p5.getPlannedDelivery());
+		System.out.println(p5.getSize());
+		p5.setPlannedDelivery(LocalDateTime.of(2024, 05, 18, 14, 33, 48, 123456789));
+		p5.setOrderCreated();
+		p5.setFragile(true);
+		p5.setDriver(dr2);
+		p5.setSize(ParcelSize.L);
+		System.out.println(p5.getPlannedDelivery());
+		System.out.println(p5.getOrderCreated());
+		System.out.println(p5.getDriver());
+		System.out.println(p5.isFragile());
+		System.out.println(p5.getSize());
+		System.out.println(p5.toString());
+		
+		
+		retrieveAllParcels();
+		try {
+			createNewParcelForCustomer(LocalDateTime.of(2024, 05, 18, 14, 33, 48, 123456789), ParcelSize.M, false, dr1, c3.getCustomerCode());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		for (Parcel tempP : allParcels) {
+			System.out.println(tempP.toString());
 		}
 		
 	}
@@ -63,18 +91,21 @@ public class MainService {
 	
 	
 	public static void createNewDriver(String name, String surname, String personCode, String licenseNo, float experienceInYears) throws Exception {
-		if(name == null || surname == null || personCode == null || licenseNo == null || experienceInYears > 80 ) throw new Exception("Invalid input");
-		for(Driver tempD : allDrivers) {
-			if(tempD.getLicenseNo() == licenseNo && tempD.getPersonCode() == personCode) {
-				System.out.println("This drivers license number and person code are already in system");
-				return;
-			}
-			else
-			{
-			Driver newDriver = new Driver(name, surname, personCode, licenseNo, experienceInYears);
-			allDrivers.add(newDriver);
-			}
-		}
+	    if(name == null || surname == null || personCode == null || licenseNo == null || experienceInYears > 80 ) throw new Exception("Invalid input");
+
+	    ArrayList<Driver> allDrivers2 = new ArrayList<>();
+
+	    for(Driver tempD : allDrivers) {
+	        if(tempD.getLicenseNo().equals(licenseNo) && tempD.getPersonCode().equals(personCode)) {
+	            System.out.println("This driver's license number and person code are already in the system");
+	            return;
+	        }
+	    }
+
+	    Driver newDriver = new Driver(name, surname, personCode, licenseNo, experienceInYears);
+	    allDrivers2.add(newDriver);
+
+	    allDrivers.addAll(allDrivers2);
 	}
 	
 	public static Driver retrieveDriverByPersonCode(String personCode) throws Exception {
@@ -87,7 +118,7 @@ public class MainService {
 		throw new Exception("No driver with this person code found in the system");
 	}
 	
-	public static void updateDriverLicenseNotByPersonCode(String personCode, String licenseNo) throws Exception {
+	public static void updateDriverLicenseByPersonCode(String personCode, String licenseNo) throws Exception {
 		if(personCode == null && licenseNo == null) throw new Exception ("Invalid input");
 		for(Driver tempD : allDrivers) {
 			if(tempD.getPersonCode() == personCode) {
@@ -98,14 +129,17 @@ public class MainService {
 	}
 	
 	public static void updateDriverExperienceInYearsByPersonCode(String personCode, float experienceInYears) throws Exception {
-		if(personCode == null && experienceInYears > 80) throw new Exception ("Invalid input");
-		for(Driver tempD : allDrivers) {
-			if(tempD.getExperienceInYears() == experienceInYears) {
-				tempD.setExperienceInYears(experienceInYears);
-				return;
-			}
-		}
+	    if(personCode == null || experienceInYears > 80) throw new Exception ("Invalid input");
+
+	    for(Driver tempD : allDrivers) {
+	        if(tempD.getPersonCode().equals(personCode)) {
+	            tempD.setExperienceInYears(experienceInYears);
+	            return;
+	        }
+	    }
+	    throw new Exception("No driver with this person code found in the system");
 	}
+	
 	public static void removeDriverByPersonCode(String personCode) throws Exception {
 		if(personCode == null ) throw new Exception ("Invalid input");
 		for(Driver tempD : allDrivers) {
@@ -151,7 +185,7 @@ public class MainService {
 		for(AbstractCustomer tempC : allCustomers) {
 			if(tempC.getPhoneNo() == phone && tempC.getAddress() == address) throw new Exception("This customer is alredy in the system");
 			
-			CustomerAsPerson newCustomer = new CustomerAsPerson(name, surname, personCode);
+			CustomerAsPerson newCustomer = new CustomerAsPerson(name, surname, personCode, address, phone);
 			return;
 			}
 		}
