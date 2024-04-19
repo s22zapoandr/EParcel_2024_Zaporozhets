@@ -42,30 +42,6 @@ public class Parcel {
 	public float getPrice() {
 		return price;
 	}
-	public void setPrice() {
-		float counter = 0;
-		if(size == ParcelSize.X) {
-			counter = 1;	
-		}
-		else if(size == ParcelSize.S) {
-			counter = 2;	
-		}
-		else if(size == ParcelSize.M) {
-			counter = 3;	
-		}
-		else if(size == ParcelSize.L) {
-			counter =  4;	
-		}
-		else if(size == ParcelSize.XL) {
-			counter = 5;	
-		}
-		if(isFragile ) {
-			this.price = (float)(counter * 1.99 + 2.99);
-		}
-		else {
-			this.price = (float)(counter * 1.99);
-		}
-	}
 	public boolean isFragile() {
 		return isFragile;
 	}
@@ -77,7 +53,35 @@ public class Parcel {
 			this.isFragile = false;
 		}
 	}
-	
+	public void setPrice() {
+		float counter = 0;
+		switch (getSize()) {
+        case X:
+            counter = 1.99f;
+            break;
+        case S:
+        	counter = 1.99f*2;
+            break;
+        case M:
+        	counter = 1.99f*3;
+            break;
+        case L:
+        	counter = 1.99f*4;
+            break;
+        case XL:
+        	counter = 1.99f*5;
+            break;
+        default:
+        	counter = 0;
+            break;
+    }
+		if(isFragile ) {
+			this.price = counter + 2.99f;
+		}
+		else {
+			this.price = counter;
+		}
+	}
 	public Driver getDriver() {
 		return driver;
 	}
@@ -96,8 +100,8 @@ public class Parcel {
 		setFragile(false);
 		setOrderCreated();
 		setPlannedDelivery(LocalDateTime.of(2025, 04, 24, 14, 33, 48, 123456789));
-		setPrice();
 		setSize(ParcelSize.M);
+		setPrice();
 	}
 	
 	public Parcel(LocalDateTime plannedDelivery, ParcelSize size, boolean isFragile, Driver driver) {
@@ -105,8 +109,8 @@ public class Parcel {
 		setFragile(isFragile);
 		setOrderCreated();
 		setPlannedDelivery(plannedDelivery);
-		setPrice();
 		setSize(size);
+		setPrice();
 	}
 	
 	public String toString() {

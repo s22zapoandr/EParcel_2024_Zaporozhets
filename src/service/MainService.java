@@ -25,7 +25,7 @@ public class MainService {
 		Driver dr1 = new Driver();
 		Driver dr2 = new Driver("Igors", "Goncarovs", "123456-09876", "Aboba", 4);
 		Driver dr3 = new Driver("Ryan", "Gosling", "121298-67894", "Xyz", 54);
-		Driver dr4 = new Driver("John", "Blaze", "43722-41016","Ghost", 66);
+		Driver dr4 = new Driver("John", "Blaze", "430722-41016","Ghost", 66);
 		allDrivers.addAll(Arrays.asList(dr1, dr2, dr3, dr4));
 		for (Driver tempD : allDrivers) {
 			System.out.println(tempD.toString());	
